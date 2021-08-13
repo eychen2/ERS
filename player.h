@@ -7,10 +7,14 @@
 class player
 {
 private:
-    queue<card> hand;
+    std::queue<card> hand;
     std::string name;
 public:
-    player(std::string name_, queue<card> hand_);
-
+    player(std::string name_, std::queue<card> hand_);
+    void addCards(std::vector<card> &cards);
+    void playCard(std::vector<card> &pile);
+    int getHandSize();
+    std::string getName();
+    std::queue<card> getHand();
 };
 #endif //ERS_PLAYER_H

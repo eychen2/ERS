@@ -8,10 +8,10 @@ class deck
 {
 public:
     int size;
-    queue<Card> deck_;
+    vector<Card> deck_;
 private:
     deck(int size_);
     void shuffle();
-
+    void deal(vector<player> players);
 };
 #endif //ERS_DECK_H
