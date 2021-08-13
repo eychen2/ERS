@@ -13,5 +13,6 @@ public:
     card(std::string suit_, int val_);
     std::string getSuit();
     int getVal();
+    void printCard();
 };
 #endif //ERS_CARD_H
