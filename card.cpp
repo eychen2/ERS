@@ -1,15 +1,13 @@
 //
 // Created by echen on 8/13/2021.
 //
-#include<string>
+#include <string>
 #include <iostream>
-#include"card.h"
+#include "card.h"
 
 
-card::card(std::string suit_, int val_)
+card::card(std::string suit, int val):suit(std::move(suit)), val(val)
 {
-    suit=suit_;
-    val=val_;
 }
 std::string card::getSuit()
 {
@@ -34,6 +32,8 @@ void card::printCard()
         case 13:
             std::cout<<"King of " <<suit<<"s"<<std::endl;
             break;
+        case 14:
+            std::cout<<suit<<" Joker"<<std::endl;
         default:
             std::cout<<std::to_string(val) <<suit<<"s"<<std::endl;
             break;

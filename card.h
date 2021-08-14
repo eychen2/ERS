@@ -1,9 +1,8 @@
 //
 // Created by echen on 8/13/2021.
 //
-
-#ifndef ERS_CARD_H
-#define ERS_CARD_H
+#include <string>
+#pragma once
 class card
 {
 private:
@@ -15,4 +14,3 @@ public:
     int getVal();
     void printCard();
 };
-#endif //ERS_CARD_H

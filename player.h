@@ -1,9 +1,9 @@
 //
 // Created by echen on 8/13/2021.
 //
-
-#ifndef ERS_PLAYER_H
-#define ERS_PLAYER_H
+#include <queue>
+#include <string>
+#pragma once
 class player
 {
 private:
@@ -17,4 +17,3 @@ public:
     std::string getName();
     std::queue<card> getHand();
 };
-#endif //ERS_PLAYER_H

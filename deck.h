@@ -1,17 +1,18 @@
 //
 // Created by echen on 8/13/2021.
 //
+#pragma once
 
-#ifndef ERS_DECK_H
-#define ERS_DECK_H
+#include <vector>
+
 class deck
 {
 public:
     int size;
-    vector<Card> deck_;
+    std::vector<card> deck_;
 private:
-    deck(int size_);
+    deck(bool joker);
     void shuffle();
-    void deal(vector<player> players);
+    void deal(std::vector<player> players);
 };
-#endif //ERS_DECK_H
+
