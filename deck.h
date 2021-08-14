@@ -7,10 +7,10 @@
 
 class deck
 {
-public:
+private:
     int size;
     std::vector<card> deck_;
-private:
+public:
     deck(bool joker);
     void shuffle();
     void deal(std::vector<player> players);
