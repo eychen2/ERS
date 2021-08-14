@@ -27,11 +27,11 @@ void deck::shuffle()
     unsigned seed =0;
     std::shuffle(deck_.begin(), deck_.end(),std::default_random_engine(seed));
 }
-void deck::deal(std::vector<player> players)
+void deck::deal(std::vector<player> & players)
 {
     for(unsigned int i =0; i<players.size();++i)
     {
-        std::vector<card> temp(deck_.begin()+i*deck_.size()/players.size(),deck_.begin()+deck_.size()/players.size()*(i+1));
+        std::vector<card> temp(deck_.begin()+i*deck_.size()/players.size(),deck_.begin()+(i+1)*deck_.size()/players.size());
         players[i].addCards(temp);
     }
 }

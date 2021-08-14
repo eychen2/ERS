@@ -35,7 +35,7 @@ void card::printCard()
         case 14:
             std::cout<<suit<<" Joker"<<std::endl;
         default:
-            std::cout<<std::to_string(val) <<suit<<"s"<<std::endl;
+            std::cout<<std::to_string(val) <<" of "<<suit<<"s"<<std::endl;
             break;
     }
 }

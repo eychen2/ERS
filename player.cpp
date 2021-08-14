@@ -1,5 +1,3 @@
-
-#include "card.h"
 #include "player.h"
 player::player(std::string name, std::queue<card> hand):name(name),hand(hand)
 {
@@ -11,6 +9,10 @@ void player::addCards(std::vector<card> &cards)
         hand.emplace(*it);
     }
     cards.clear();
+}
+void player::addCard(card &c)
+{
+    hand.emplace(c);
 }
 void player::playCard(std::vector<card> &pile)
 {

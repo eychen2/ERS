@@ -1,8 +1,9 @@
 //
 // Created by echen on 8/13/2021.
 //
-#include <string>
 #pragma once
+#include <string>
+
 class card
 {
 private:
