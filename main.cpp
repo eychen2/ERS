@@ -6,10 +6,15 @@
 #include <thread>
 #include <string>
 #include <unordered_map>
-bool isSlap(std::vector<int> pile)
+bool isSlap(std::vector<card> pile)
 {
-    if(pile[0]==pile[pile.size()-1]||pile[pile.size()-1]==pile[pile.size()-3])
-        return true;
+    if(pile.size()>1)
+    {
+        if(pile.size()>=3)
+            return (pile[0].getVal()==pile[pile.size()-1].getVal())||(pile[pile.size()-1].getVal()==pile[pile.size()-3].getVal());
+        else
+            return (pile[0].getVal()==pile[pile.size()-1].getVal());
+    }
     return false;
 }
 std::unordered_map<std::string,std::vector<int>> diff ={{"Easy",{800,5}},{"Normal",{500,6}},{"Hard",{400,8}},{"Challenging",{300,9}},{"Impossible",{200,10}}};
@@ -18,6 +23,9 @@ int main() {
     std::vector<player> players;
     int playerTurn=rand()%2;
     int face=0;
+    char move;
+    bool burn=false;
+    int personBurned=0;
     std::cout<<"Welcome. You will be playing Egyptian Rat Screw against a computer"<<std::endl;
     std::cout<<"Name?"<<std::endl;
     std::string cheese;
@@ -35,6 +43,34 @@ int main() {
     }
     d.shuffle();
     d.deal(players);
+    int pcChance = diff[cheese].back();
+    int pcDelay = diff[cheese].front();
+    std::cout<<"You will press the space key to slap and the enter key to play the next card. Good luck and have fun!"<<std::endl;
+    std::cout<<"By coin flip, "<<players[playerTurn].getName()<< " will go first"<<std::endl;
+    std::vector<card> pile;
+    while(players[0].getHandSize()!=0&&players[1].getHandSize()!=0)
+    {
+        players[playerTurn].playCard(pile,burn);
+        if(!burn)
+        {
+            std::cout << "The card that " << players[playerTurn].getName() << " played is ";
+            pile[pile.size()-1].printCard();
+        }
+        else
+        {
+            std::cout << "The card that " << players[personBurned].getName() << " played is ";
+            pile[0].printCard();
+        }
+        if(pile[pile.size()-1].getVal()>10)
+            face=pile[pile.size()-1].getVal()-10;
+        if(isSlap(pile))
+        {
 
 
+        }
+        else
+        {
+            burn = true;
+        }
+    }
 }

@@ -14,11 +14,15 @@ void player::addCard(card &c)
 {
     hand.emplace(c);
 }
-void player::playCard(std::vector<card> &pile)
+void player::playCard(std::vector<card> &pile, bool burn)
 {
     card top = hand.front();
     hand.pop();
-    pile.emplace_back(top);
+    if(burn)
+        pile.emplace_back(top);
+    else
+        pile.insert(pile.begin(),top);
+
 }
 std::string player::getName()
 {
