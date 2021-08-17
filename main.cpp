@@ -63,14 +63,44 @@ int main() {
         }
         if(pile[pile.size()-1].getVal()>10)
             face=pile[pile.size()-1].getVal()-10;
+        if(pile[pile.size()-1].getVal()==1)
+            face=4;
         if(isSlap(pile))
         {
-
 
         }
         else
         {
             burn = true;
+        }
+        if(!burn)
+        {
+            if(face>0)
+            {
+                --face;
+                if(face==0)
+                {
+                    if(playerTurn==0)
+                    {
+                        std::cout << players[1].getName() << " has won the pile" << std::endl;
+                        playerTurn=1;
+                        players[1].addCards(pile);
+                    }
+                    else
+                    {
+                        std::cout << players[0].getName() << " has won the pile" << std::endl;
+                        playerTurn=0;
+                        players[0].addCards(pile);
+                    }
+                }
+            }
+            else
+            {
+                if(playerTurn==0)
+                    playerTurn=1;
+                else
+                    playerTurn=0;
+            }
         }
     }
 }
