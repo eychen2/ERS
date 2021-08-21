@@ -41,6 +41,7 @@ int main() {
         std::cout<<"That is not a difficulty option. Try again. "<<std::endl;
         std::cin>>cheese;
     }
+    char key;
     d.shuffle();
     d.deal(players);
     int pcChance = diff[cheese].back();
@@ -65,8 +66,36 @@ int main() {
             face=pile[pile.size()-1].getVal()-10;
         if(pile[pile.size()-1].getVal()==1)
             face=4;
+
         if(isSlap(pile))
         {
+            bool compW=false;
+            int compSlap = rand()%10+1;
+            auto start = std::chrono::steady_clock::now();
+            while(key!='\n'&&key!=' ')
+            {
+                if(std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now()-start).count()<pcDelay&&compSlap<=pcChance) {
+                    break;
+                    compW=true;
+                }
+                key = std::cin.get();
+            }
+            if(compW) {
+                players[1].addCards(pile);
+                playerTurn=1;
+            }
+            else if(key=='\n')
+            {
+                if(playerTurn==1)
+                    playerTurn=0;
+                else
+                    playerTurn=1;
+            }
+            else
+            {
+                players[0].addCards(pile);
+                playerTurn=0;
+            }
 
         }
         else
